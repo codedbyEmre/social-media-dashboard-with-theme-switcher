@@ -1,0 +1,330 @@
+@import 'configs';
+
+*{
+    box-sizing: border-box;
+    font-family: $fontStack;
+}
+
+body{
+    font-size: 14px;
+    margin: 0;
+    overflow-x: hidden;
+    transition: 0.4s ease all;
+}
+
+header{
+    min-height: 100vh;
+    position: relative;
+    background-color: $WhiteBG;
+    transition: 0.4s ease all;
+    .header-top-bg{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 30vh;
+        width: 100%;
+        background-color: $VeryPaleBlueTopBGPattern;
+        z-index: -1;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+    .container{
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        .header-top{
+            min-height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .header-top-text{
+                h2{
+                    margin-bottom: 0;
+                    font-size: 1.75rem;
+                    color: $VeryDarkBlueText;
+                }
+                h4{
+                    margin-top: 0.5rem;
+                    color: $DarkGrayishBlueText;
+                }
+            }
+            .header-top-switch{
+                display: flex;
+                align-items: center;
+                h3{
+                    margin: 0 1rem;
+                    color: $DarkGrayishBlueText;
+                    font-size: 0.95rem;
+                }
+                input[type="checkbox"]{
+                    position: relative;
+                    width: 50px;
+                    height: 25px;
+                    appearance: none;
+                    background-color: $Toggle;
+                    border-radius: 20px;
+                    transition: 0.5s ease all;
+                    outline: none;
+                    cursor: pointer;
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 20px;
+                        background-color: #fff;
+                        top: 0;
+                        left: 0;
+                        transition: 0.5s ease all;
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                        transform: scale(0.8);
+                    }
+                }
+                input:checked[type="checkbox"]{
+                    background: linear-gradient(to right,hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+                    &::before{
+                        left: 25px;
+                        background-color: hsl(229, 37%, 27%);
+                    }
+                }
+            }
+            @media(max-width: 600px){
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 3rem;
+            }
+        }
+        .header-body{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 1.5rem;
+            grid-auto-flow: dense;
+            .card{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: $LightGrayishBlueCardBG;
+                border-radius: 6px;
+                border-top: 5px solid $DarkGrayishBlueText;
+                cursor: pointer;
+                transition: 0.3s ease all;
+                &:nth-of-type(1){
+                    border-color: $Facebook;
+                }
+                &:nth-of-type(2){
+                    border-color: $Twitter;
+                }
+                &:nth-of-type(3){
+                    border-color: hsl(329, 68%, 46%);
+                }
+                &:nth-of-type(4){
+                    border-color: $YouTube;
+                    .card-bottom{
+                        h5{
+                            color: $BrightRed;
+                        }
+                    }
+                }
+                &:hover{
+                    background-color: hsl(225, 40%, 90%);
+                }
+                .card-top{
+                    display: flex;
+                    align-items: center;
+                    img{
+                        margin-right: 0.5rem;
+                    }
+                    h4{
+                        color: $DarkGrayishBlueText;
+                    }
+                }
+                .card-body{
+                    margin-top: -2rem;
+                    h1{
+                        font-size: 3.5rem;
+                        margin-bottom: 0;
+                    }
+                    p{
+                        text-align: center;
+                        margin-top: 0;
+                        font-size: 0.8rem;
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                        color: $DarkGrayishBlueText;
+                    }
+                }
+                .card-bottom{
+                    margin-top: -0.5rem;
+                    display: flex;
+                    align-items: center;
+                    img{
+                        margin-right: 0.25rem;
+                    }
+                    h5{
+                        color: $LimeGreen;
+                    }
+                }
+            }
+        }
+        .header-bottom{
+            margin-top: 2.75rem;
+            h2{
+                color: $DarkGrayishBlueText;
+                margin-bottom: 1.5rem;
+            }
+            .cards{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+                grid-gap: 1.5rem;
+                grid-auto-flow: dense;
+                .card{
+                    background-color: $LightGrayishBlueCardBG;
+                    padding: 2rem 1.5rem;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    transition: 0.3s ease all;
+                    &:hover{
+                        background-color: hsl(225, 40%, 90%);
+                    }
+                    &:nth-of-type(2), &:nth-of-type(7), &:nth-of-type(8){
+                        .card-bottom{
+                            div{
+                                p{
+                                    color: $BrightRed;
+                                    font-weight: 700;
+                                    font-size: 0.75rem;
+                                }
+                            }
+                        }
+                    }
+                    .card-top{
+                        margin-top: -1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        color: $DarkGrayishBlueText;
+                        h3{
+                            font-size: 0.85rem;
+                        }
+                    }
+                    .card-bottom{
+                        margin-top: -0.5rem;
+                        margin-bottom: -1.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        h1{
+                            color: $VeryDarkBlueText;
+                            font-size: 1.8rem;
+                        }
+                        div{
+                            display: flex;
+                            align-items: center;
+                            p{
+                                margin-left: 0.2rem;
+                                color: $LimeGreen;
+                                font-weight: 700;
+                                font-size: 0.75rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    // Dark mode
+    &.change{
+        background-color: $VeryDarkBlueBG;
+        .header-top-bg{
+            background-color: hsl(230, 38%, 55%);
+        }
+        .container{
+            .header-top{
+                .header-top-text{
+                    h2{
+                        color: #fff;
+                    }
+                    h4{
+                        color: $DesaturatedBlueText;
+                    }
+                }
+                .header-top-switch{
+                    h3{
+                        color: $DesaturatedBlueText;
+                    }
+                }
+            }
+            .header-body{
+                .card{
+                    background-color: $DarkDesaturatedBlueCardBG;
+                    &:hover{
+                        background-color: hsl(230, 26%, 23%)
+                    }
+                    .card-top{
+                        h4{
+                            color: $DesaturatedBlueText;
+                        }
+                    }
+                    .card-body{
+                        h1{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .header-bottom{
+                h2{
+                    color: #fff;
+                }
+                .cards{
+                    .card{
+                        background-color: $DarkDesaturatedBlueCardBG;
+                        &:hover{
+                            background-color: hsl(230, 26%, 23%)
+                        }
+                        &:nth-of-type(2), &:nth-of-type(7), &:nth-of-type(8){
+                            .card-bottom{
+                                div{
+                                    p{
+                                        color: $BrightRed;
+                                        font-weight: 700;
+                                        font-size: 0.75rem;
+                                    }
+                                }
+                            }
+                        }
+                        .card-top{
+                            color: $DesaturatedBlueText;
+                        }
+                        .card-bottom{
+                            h1{
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.attribution{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #000;
+    text-align: center;
+    transition: 0.4s ease all;
+    &.attribution-change{
+        color: #fff;
+        background-color: $VeryDarkBlueBG;
+        a{
+            color: #fff;
+        }
+    }
+}
+
